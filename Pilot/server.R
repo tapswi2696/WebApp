@@ -2,7 +2,7 @@ shinyServer(function(session, input, output){
   
   observe({
     B001 <- termData$L1.Name [termData$CT.Type == input$IN001]
-    updateSelectInput(session, "IN002","CDISC Submission Value [e.g. LBTESTCD]",choices = sort(unique(B001)))
+    updateSelectInput(session, "IN002","CDISC Submission Value",choices = sort(unique(B001)))
   })
   
   output$TAB.B101 <- renderText({
@@ -37,7 +37,20 @@ shinyServer(function(session, input, output){
     OUT201 <- grati[ ,-1]
   },options = list(lengthMenu = list(c(3,5,10,15,-1), c('3', '5', '10','15','All')), pageLength = 10))
   
+  
   output$TAB.Z101 <- renderDataTable({
-    OUTZ01 <- termData %>% filter(CT.Type == input$IN001) %>% filter_all(any_vars(str_detect(.,fixed(input$IN003, ignore_case=TRUE)))) %>% select(L1.Code,L1.Name,L1.Label,L2.Code,L2.Name,CDISC.Synonym,CDISC.Definition,NCI.Preferred.Term) %>% rename(NCI.Code=L2.Code,NCI.Code.Name=L2.Name)
+    OUTZ01 <- termData %>% filter(CT.Type == input$IN001 & input$IN003 != "") %>% filter_all(any_vars(str_detect(.,fixed(input$IN003, ignore_case=TRUE)))) %>% select(L1.Code,L1.Name,L1.Label,L2.Code,L2.Name,CDISC.Synonym,CDISC.Definition,NCI.Preferred.Term) %>% group_by(L1.Code) %>% rename(NCI.Code.main=L1.Code,NCI.Code.Label.main=L1.Label,NCI.Name.main=L1.Name,NCI.Code=L2.Code,NCI.Code.Name=L2.Name)
     },options = list(lengthMenu = list(c(3,5,10,15,-1), c('3', '5', '10','15','All')), pageLength = 10))
 })
+
+
+
+
+
+
+
+
+
+
+
+
