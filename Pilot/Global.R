@@ -13,8 +13,8 @@ library(data.table)
 library(stringr)
 library(stringi)
 
-termData <- read_sas("/Users/sp/HandyCTWebApp/Pilot/final.sas7bdat")
-
+termData <- read_sas("final.sas7bdat")
+#/Users/sp/HandyCTWebApp/Pilot/
 termData <- termData %>% 
   rename(CT.Type = origin,
          Codelist.extensible = codelistext,
@@ -29,10 +29,10 @@ termData <- termData %>%
          VerDate = verdate)
 
 grati <- data.frame("SN" = 1:3, 
-                    "Contributor.List" = c("Parth Shah","Vishal Zaveri","Toral Zaveri"), 
-                    "Email" = c("tapswi2696@gmail.com [Usual response time < 24 hours]", "vbzaveri1@gmail.com","@gmail.com"),
+                    "Contributor.List" = c("Parth Shah","Vishal Zaveri","Toral Patel"), 
+                    "Email" = c("tapswi2696@gmail.com", "vbzaveri1@gmail.com"," -- "),
                     "Phone" = c("Based on scheduled appointments only","Based on scheduled appointments only","Based on scheduled appointments only"), 
-                    "Task/Role" = c("Design,Development,Maintainace","Backend Dataset Validator,Techical Review","Design,Technical Review,Quality Management"))
+                    "Task/Role" = c("Design, Development, Maintenance","Backend Dataset Validator, Techical Review","Design, Technical Review, Quality Management"))
 
 
 
