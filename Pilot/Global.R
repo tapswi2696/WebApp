@@ -9,8 +9,11 @@ library(haven)
 library(DT)
 library(units)
 library(shinyWidgets)
+library(data.table)
+library(stringr)
+library(stringi)
 
-termData <- read_sas("/Users/sp/R_Soft/bb/test/final.sas7bdat")
+termData <- read_sas("/Users/sp/HandyCTWebApp/Pilot/final.sas7bdat")
 
 termData <- termData %>% 
   rename(CT.Type = origin,
