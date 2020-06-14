@@ -1,0 +1,12 @@
+name: handyct
+title: handyct
+username:
+account: shahparth
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2232375
+bundleId: 3260148
+url: https://shahparth.shinyapps.io/handyct/
+when: 1591940139.73074
+asMultiple: FALSE
+asStatic: FALSE
